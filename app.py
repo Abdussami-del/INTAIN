@@ -29,7 +29,7 @@ def load_md(file_path):
 # Helper function to load images safely
 def display_image(file_path, caption=""):
     if os.path.exists(file_path):
-        st.image(Image.open(file_path), caption=caption, use_column_width=True)
+        st.image(file_path, caption=caption, use_container_width=True)
     else:
         st.warning(f"Image not found: {file_path}")
 
