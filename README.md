@@ -5,6 +5,8 @@
 This repository contains the complete end-to-end Machine Learning pipeline and required deliverables for the Loan Performance Intelligence Engine challenge. The project focuses on data intelligence, time-aware multi-outcome loan prediction, survival modeling, scenario simulation, and a robust LLM-assisted reviewer copilot.
 
 🔗 **[View the Live Kaggle Notebook](https://www.kaggle.com/code/abdussaminalbund/notebooked6f9f2ed6)**
+🔗 **[View the dashoard(synthetic dataset)](https://intain-aazadx2egpuzkjm9te8ofg.streamlit.app/)**
+
 
 ---
 
