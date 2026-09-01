@@ -56,40 +56,46 @@ st.markdown("""
     }
     
     /* Space out the tabs */
-    div[data-testid="stTabs"] > div > div > div {
+    div[data-baseweb="tab-list"], div[data-testid="stTabs"] > div > div > div {
         gap: 15px !important;
         justify-content: center !important;
+        border-bottom: none !important;
+        padding-bottom: 2rem !important;
     }
 
     /* Style the buttons to be floating white boxes */
-    div[data-testid="stTabs"] button {
+    button[data-baseweb="tab"], div[data-testid="stTabs"] button {
         background-color: #FFFFFF !important;
-        border: 1px solid #F0F2F5 !important;
+        border: 1px solid #E2E8F0 !important;
         border-radius: 18px !important;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
         height: 100px !important;
-        min-width: 105px !important;
+        width: 125px !important;
         padding: 15px 5px !important;
         transition: all 0.2s ease !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
     
     /* Hover effect */
-    div[data-testid="stTabs"] button:hover {
+    button[data-baseweb="tab"]:hover, div[data-testid="stTabs"] button:hover {
         transform: translateY(-3px) !important;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
-        border: 1px solid #E2E8F0 !important;
+        border: 1px solid #CBD5E0 !important;
     }
 
     /* Selected Tab state - minimal border like the reference */
-    div[data-testid="stTabs"] button[aria-selected="true"] {
+    button[data-baseweb="tab"][aria-selected="true"], div[data-testid="stTabs"] button[aria-selected="true"] {
         border: 1.5px solid #E2E8F0 !important;
         background-color: #FFFFFF !important;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
     }
     
     /* Force text to stack nicely and mimic the icon-over-text layout */
-    div[data-testid="stTabs"] button p {
-        font-size: 1rem !important;
+    button[data-baseweb="tab"] p, div[data-testid="stTabs"] button p {
+        font-size: 0.90rem !important;
         font-weight: 600 !important;
         color: #4A5568 !important;
         text-align: center !important;
@@ -97,10 +103,12 @@ st.markdown("""
         flex-direction: column !important;
         align-items: center !important;
         gap: 8px !important;
+        line-height: 1.2 !important;
+        white-space: pre-wrap !important;
     }
     
     /* Hide the default bottom line on tabs */
-    div[data-testid="stTabs"] > div > div > div > div {
+    div[data-baseweb="tab-highlight"], div[data-testid="stTabs"] > div > div > div > div {
         display: none !important;
     }
 
@@ -183,32 +191,18 @@ if user_query:
     
 st.divider()
 
-# 6. Centralized Navigation (Floating Cards exactly mapped to User Request)
+# 6. Centralized Navigation (Mapped to the Hackathon Reports)
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
-    "😀\nMe", 
-    "💼\nProjects", 
-    "📚\nSkills", 
-    "🎉\nFun", 
-    "🔍\nContact"
+    "📋\nModel Card", 
+    "🧠\nExplain", 
+    "📉\nScenarios", 
+    "🚨\nAnomalies", 
+    "📊\nData Intel"
 ])
 
-# --- TAB 1: ME (Copilot & Logs) ---
+# --- TAB 1: MODEL CARD ---
 with tab1:
-    st.markdown("### 😀 About Me (AI Copilot)")
-    st.markdown("I am an AI Reviewer integrated into the Loan Intelligence Engine. I help human analysts review policy exceptions and understand model outputs.")
-    
-    if os.path.exists("llm_prompt_logs_rag.csv"):
-        df_logs = pd.read_csv("llm_prompt_logs_rag.csv")
-        for idx, row in df_logs.iterrows():
-            with st.chat_message("assistant", avatar="🤖"):
-                st.markdown(f"**System Exception Detected:**")
-                st.info(row['output'])
-                with st.expander("🔍 View Internal RAG Prompt Context"):
-                    st.text(row['prompt'])
-
-# --- TAB 2: PROJECTS (Model Card & Submission) ---
-with tab2:
-    st.markdown("### 💼 Project Details (Model Card)")
+    st.markdown("### 📋 Project Details (Model Card)")
     st.markdown("Objective, data, features, model type, validation method, metrics, limitations, leakage controls, and known failure modes.")
     st.markdown(load_md("model_card.md"))
     
@@ -227,9 +221,9 @@ with tab2:
                 use_container_width=True
             )
 
-# --- TAB 3: SKILLS (Explainability & Survival) ---
-with tab3:
-    st.markdown("### 📚 My Skills (Explainability & Responsible AI)")
+# --- TAB 2: EXPLAINABILITY ---
+with tab2:
+    st.markdown("### 🧠 Explainability Report")
     st.markdown("Global feature importance, local examples, false positives, false negatives, and model uncertainty.")
     st.markdown(load_md("reports/explainability_report.md"))
     st.divider()
@@ -239,9 +233,9 @@ with tab3:
     st.divider()
     display_image("reports/task3_kaplan_meier_baseline.png", "Time-to-Event (Kaplan-Meier Baseline)")
 
-# --- TAB 4: FUN (Scenario Simulator) ---
-with tab4:
-    st.markdown("### 🎉 Interactive Simulator (Scenarios)")
+# --- TAB 3: SCENARIOS ---
+with tab3:
+    st.markdown("### 📉 Scenario Simulator")
     st.markdown("Base, adverse, and high-prepayment scenario outputs.")
     if os.path.exists("scenario_report.csv"):
         df_scenario = pd.read_csv("scenario_report.csv")
@@ -255,16 +249,18 @@ with tab4:
             st.markdown("**Projected Prepayment Probability**")
             st.bar_chart(df_scenario.pivot(index="state", columns="scenario", values="proj_prepay_prob"))
 
-# --- TAB 5: CONTACT (Anomalies & Data Intelligence) ---
-with tab5:
-    st.markdown("### 🔍 Contact Reviewers (Top Anomalies)")
-    st.markdown("Records flagged for immediate human review.")
+# --- TAB 4: ANOMALIES ---
+with tab4:
+    st.markdown("### 🚨 Reviewer-Ready Anomalies")
+    st.markdown("Records flagged for immediate human review based on hybrid scoring.")
     if os.path.exists("reviewer_ready_anomalies.csv"):
         df_anomalies = pd.read_csv("reviewer_ready_anomalies.csv")
         if 'hybrid_risk_score' in df_anomalies.columns:
             df_anomalies['hybrid_risk_score'] = df_anomalies['hybrid_risk_score'].round(4)
         st.dataframe(df_anomalies, use_container_width=True, hide_index=True)
-    st.divider()
+
+# --- TAB 5: DATA INTEL ---
+with tab5:
     st.markdown("### 📊 Data Intelligence Report")
-    st.markdown("Profiling, missingness, outliers, drift, relationship checks.")
+    st.markdown("Profiling, missingness, outliers, drift, and relationship checks.")
     st.markdown(load_md("reports/data_intelligence_report.md"))
