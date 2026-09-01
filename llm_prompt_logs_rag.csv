@@ -1,0 +1,17 @@
+timestamp,model,temperature,prompt,output
+2026-09-01 15:44:51,gemini-3.6-flash,0.0,"
+You are an AI assistant for a loan reviewer. Base your response strictly on the data provided below.
+Do not invent information.
+
+[SYSTEM CONTEXT - DATA DICTIONARY]
+Document_Gap: Exception definition not found in dictionary.
+
+[LOAN DATA]
+Loan ID: LOAN_002257
+Flags: Document_Gap
+Anomaly Drivers: Missing Required Documentation
+
+Task: Write a concise, 2-sentence reviewer note summarizing why this loan was flagged based on the dictionary definition, and state what the human reviewer should verify.
+","Loan LOAN_002257 was flagged with a Document_Gap because the exception definition was not found in the dictionary. The human reviewer should verify the missing required documentation associated with this anomaly driver.
+
+[SYSTEM NOTE: This is an AI-generated recommendation. Human decision required.]"

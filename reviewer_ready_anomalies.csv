@@ -1,0 +1,26 @@
+loan_id,reporting_month,exception_required,exception_type,ml_anomaly_score,hybrid_risk_score,anomaly_drivers
+LOAN_002257,2025-01,1,Document_Gap,1.0,1.0,Missing Required Documentation
+LOAN_001967,2024-11,1,Document_Gap,0.9753562947794254,0.9901425179117702,Missing Required Documentation
+LOAN_000492,2025-04,1,Document_Gap,0.9525751901599877,0.9810300760639951,Missing Required Documentation
+LOAN_000431,2025-04,1,Document_Gap,0.9491530639459231,0.9796612255783692,Missing Required Documentation
+LOAN_003420,2025-02,1,Document_Gap,0.9434917901454255,0.9773967160581702,Missing Required Documentation
+LOAN_000994,2025-05,1,Document_Gap,0.9402973623941329,0.9761189449576532,Missing Required Documentation
+LOAN_002742,2025-01,1,Document_Gap,0.9267091805571822,0.9706836722228729,Missing Required Documentation
+LOAN_001851,2025-01,1,Document_Gap,0.8932453757019669,0.9572981502807868,Missing Required Documentation
+LOAN_002275,2025-02,1,Document_Gap,0.8910835568384256,0.9564334227353702,Missing Required Documentation
+LOAN_000601,2024-11,1,Document_Gap,0.8503637506601124,0.940145500264045,Missing Required Documentation
+LOAN_003060,2025-08,1,Document_Gap,0.8244662825217706,0.9297865130087082,Missing Required Documentation
+LOAN_003414,2025-03,1,Data_Mismatch,0.8091548493744537,0.9236619397497815,Current Balance > Original Balance
+LOAN_002097,2025-05,1,Data_Mismatch,0.7923560662198476,0.916942426487939,Current Balance > Original Balance
+LOAN_003060,2025-07,1,Document_Gap,0.7923232148053778,0.9169292859221512,Missing Required Documentation
+LOAN_003584,2024-10,1,Document_Gap,0.7890592465409972,0.9156236986163989,Missing Required Documentation
+LOAN_003956,2024-10,1,Document_Gap,0.7693345966355862,0.9077338386542345,Missing Required Documentation
+LOAN_002041,2025-08,1,Data_Mismatch,0.7573241878830311,0.9029296751532124,Current Balance > Original Balance
+LOAN_002097,2025-04,1,Data_Mismatch,0.7527101979610835,0.9010840791844335,Current Balance > Original Balance
+LOAN_000672,2025-09,1,Data_Mismatch,0.7469634971754634,0.8987853988701853,Current Balance > Original Balance
+LOAN_002097,2025-03,1,Data_Mismatch,0.7441881851640043,0.8976752740656018,Current Balance > Original Balance
+LOAN_000672,2025-07,1,Data_Mismatch,0.7424324755478693,0.8969729902191477,Current Balance > Original Balance
+LOAN_000672,2025-08,1,Data_Mismatch,0.7408294191425989,0.8963317676570395,Current Balance > Original Balance
+LOAN_003804,2024-11,1,Document_Gap,0.7400846736122397,0.8960338694448959,Missing Required Documentation
+LOAN_002097,2025-02,1,Data_Mismatch,0.7373913016841884,0.8949565206736754,Current Balance > Original Balance
+LOAN_002620,2025-05,1,Data_Mismatch,0.7356380039369828,0.8942552015747931,Current Balance > Original Balance
