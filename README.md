@@ -48,7 +48,7 @@ The pipeline avoids random row-level splitting (`train_test_split`). Instead, it
 Task 7 of the pipeline integrates a **Grounded LLM Reviewer Copilot** designed to map anomalies to the official data dictionary and generate human-readable review notes without hallucination.
 
 ### API Integration
-* **Model:** Google Gemini 1.5 Flash (via `google-generativeai`).
+* **Model:** Google Gemini 3.6 Flash (via `google-generativeai`).
 * **Settings:** `temperature = 0.0` to force maximum determinism.
 * **Authentication:** The pipeline utilizes `kaggle_secrets` to securely fetch the `GEMINI_API_KEY`. 
 
