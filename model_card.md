@@ -2,7 +2,6 @@
 
 **Date:** September 2026  
 **Project:** Intain Campus FinTech Challenge 2026 (AI Track)  
-**Role:** Lead Machine Learning Engineer & AI Ethicist  
 
 ---
 
